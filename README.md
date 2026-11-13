@@ -49,3 +49,9 @@ hw/verify_disasm.py               the compiled code is the test's code
 tests/hand/                       17 classic tests written to the paper's logged conditions
 results/                          oracle.md, hardware.md
 ```
+
+## Licence
+
+MIT, for everything in this repository ([LICENSE](LICENSE)). The tests and model results that
+`tools/fetch_tests.sh` downloads into `third_party/` are not part of it and keep their own terms:
+herdtools7's catalogue is CeCILL-B, and the paper's tests and results belong to their authors.
