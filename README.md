@@ -33,8 +33,9 @@ bash hw/build.sh                 # mca-hw for arm64 Android (NDK r30)
 bash hw/run_phone.sh             # on a phone with USB debugging: writes results/hardware.md
 ```
 
-Run from WSL or Linux. The NDK path and adb are found automatically on this machine. Set `NDK=`
-and `ADB=` elsewhere.
+Run from WSL or Linux. The NDK and adb are found in the Android SDK: `ANDROID_HOME` if set, else
+Android Studio's default location (on Windows, through WSL), else `~/Android/Sdk`. `NDK=` and `ADB=`
+override them.
 
 ## Layout
 

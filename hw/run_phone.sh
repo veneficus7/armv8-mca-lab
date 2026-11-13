@@ -9,8 +9,15 @@
 #   cross             threads alternate between the fastest and slowest clusters
 set -euo pipefail
 cd "$(dirname "$0")/.."
+. hw/sdk.sh
+# adb on the PATH, else the SDK's own (adb.exe under WSL, which talks to the Windows USB stack)
 ADB=${ADB:-adb}
-command -v "$ADB" >/dev/null || ADB=/mnt/c/Users/loh/AppData/Local/Android/Sdk/platform-tools/adb.exe
+if ! command -v "$ADB" >/dev/null; then
+  for cand in "$(android_sdk)/platform-tools/adb.exe" "$(android_sdk)/platform-tools/adb"; do
+    [ -x "$cand" ] && { ADB=$cand; break; }
+  done
+fi
+command -v "$ADB" >/dev/null || [ -x "$ADB" ] || { echo "no adb found: install platform-tools, or set ADB=/path/to/adb"; exit 1; }
 SMOKE=0
 if [ "${1:-}" = "--smoke" ]; then SMOKE=1; shift; fi
 ITER=${1:-1000000}

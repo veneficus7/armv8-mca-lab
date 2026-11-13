@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 # Builds mca-hw for Android (arm64) from hw/suite.txt. Run in WSL or Linux, from anywhere.
+#   hw/build.sh                  the newest NDK in the Android SDK (see hw/sdk.sh)
 #   NDK=/path/to/ndk hw/build.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
-NDK=${NDK:-/mnt/c/Users/loh/AppData/Local/Android/Sdk/ndk/30.0.16248370}
+. hw/sdk.sh
+NDK=${NDK:-$(ls -d "$(android_sdk)"/ndk/*/ 2>/dev/null | sort -V | tail -1)}
+NDK=${NDK%/}
+[ -d "$NDK/toolchains" ] || { echo "no Android NDK found: install one, or set NDK=/path/to/ndk"; exit 1; }
 BIN="$NDK/toolchains/llvm/prebuilt/windows-x86_64/bin"
 [ -x "$BIN/clang.exe" ] || BIN="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin"
 EXE=""; [ -x "$BIN/clang.exe" ] && EXE=".exe"
