@@ -1,0 +1,13 @@
+AArch64 3.SB+polas
+"Store buffering on three threads, each a store-release then a load-acquire: [L];po;[A] orders them"
+{
+0:X1=x; 0:X3=y;
+1:X1=y; 1:X3=z;
+2:X1=z; 2:X3=x;
+}
+ P0           | P1           | P2           ;
+ MOV W0,#1    | MOV W0,#1    | MOV W0,#1    ;
+ STLR W0,[X1] | STLR W0,[X1] | STLR W0,[X1] ;
+ LDAR W2,[X3] | LDAR W2,[X3] | LDAR W2,[X3] ;
+exists
+(0:X2=0 /\ 1:X2=0 /\ 2:X2=0)

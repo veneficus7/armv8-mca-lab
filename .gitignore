@@ -1,0 +1,8 @@
+# Downloaded by tools/fetch_tests.sh (third-party tests and model results; their own licences)
+third_party/
+# Build outputs
+model/mca-check
+model/build/
+hw/build/
+cmake-build-*/
+__pycache__/

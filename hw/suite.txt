@@ -1,0 +1,42 @@
+# The tests run on the phone, one path per line (relative to the repo root).
+# Allowed by the model: whether a core shows each of these is the hardware's business.
+third_party/herd-catalogue/SB.litmus
+third_party/herd-catalogue/MP.litmus
+third_party/herd-catalogue/LB.litmus
+third_party/herd-catalogue/2+2W.litmus
+third_party/herd-catalogue/R.litmus
+third_party/herd-catalogue/S.litmus
+third_party/paper-tests/IRIW.litmus
+third_party/paper-tests/PPOCA.litmus
+tests/hand/MP+po+addr.litmus
+tests/hand/MP+dmb.sy+ctrl.litmus
+third_party/herd-catalogue/SB+dmb.sy+rel-acqpc.litmus
+# Forbidden by the model: any of these seen means a broken harness first, then a question
+# about the silicon. The coherence tests (Co*) are the controls that must never fail.
+third_party/herd-catalogue/CoRR.litmus
+third_party/herd-catalogue/CoRW1.litmus
+third_party/herd-catalogue/CoRW2.litmus
+third_party/herd-catalogue/CoWR.litmus
+third_party/herd-catalogue/CoWW.litmus
+third_party/herd-catalogue/SB+dmb.sys.litmus
+third_party/herd-catalogue/MP+dmb.sys.litmus
+third_party/herd-catalogue/LB+dmb.sys.litmus
+third_party/herd-catalogue/2+2W+dmb.sys.litmus
+third_party/herd-catalogue/R+dmb.sys.litmus
+third_party/herd-catalogue/S+dmb.sys.litmus
+third_party/herd-catalogue/MP+rel+acq.litmus
+third_party/herd-catalogue/MP+rel+acqpc.litmus
+third_party/herd-catalogue/SB+dmb.sy+rel-acq.litmus
+third_party/herd-catalogue/MP+rel+SWPacq.litmus
+tests/hand/MP+dmb.sy+addr.litmus
+tests/hand/MP+dmb.st+addr.litmus
+tests/hand/MP+dmb.sy+dmb.ld.litmus
+tests/hand/MP+dmb.sy+ctrlisb.litmus
+tests/hand/LB+datas.litmus
+tests/hand/LB+addrs.litmus
+tests/hand/LB+ctrls.litmus
+tests/hand/WRC+data+addr.litmus
+tests/hand/ISA2+dmb.sy+data+addr.litmus
+tests/hand/PPOAA.litmus
+third_party/paper-tests/IRIW+addrs.litmus
+third_party/paper-tests/WRC+addrs.litmus
